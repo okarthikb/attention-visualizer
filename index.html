@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Transformer Attention Visualization</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <p style="font-size: 1.75em">attention visualizer</p>
+    <form id="prompt-form">
+      <textarea id="prompt" name="prompt" class="textbox" rows="7" placeholder="enter text here" required></textarea>
+      <input type="submit" value="submit" class="submit-button">
+    </form>
+    <div class="slider-container">
+      <label for="layer">layer</label>
+      <input type="range" id="layer" min="1" max="12" value="1" class="slider">
+      <span id="layer-value">1</span>
+    </div>
+    <div class="slider-container">
+      <label for="head">head</label>
+      <input type="range" id="head" min="1" max="12" value="1" class="slider">
+      <span id="head-value">1</span>
+    </div>
+    <pre id="prompt-text"></pre>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
+</html>
