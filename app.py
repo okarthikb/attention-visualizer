@@ -5,8 +5,7 @@ import torch
 
 app = Flask(__name__, template_folder='./', static_folder='./')
 
-device = 'cuda'  # cpu if no cuda, mps won't work
-model = GPT2Model.from_pretrained("gpt2").eval().to(device)
+model = GPT2Model.from_pretrained("gpt2").eval().to('cpu')
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
 
@@ -34,7 +33,7 @@ def serve_css():
 def attention_scores():
   prompt = request.json.get('prompt')
   input_tokens = tokenizer.tokenize(prompt)
-  input_token_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
+  input_token_ids = tokenizer(prompt, return_tensors="pt").input_ids.to('cpu')
 
   with torch.no_grad():
     attentions = model(input_token_ids, output_attentions=True).attentions
