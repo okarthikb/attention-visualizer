@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   let spans = [];
   let attentions = [];
 
-  // straightforward function to visualize attention
   function visualizeAttention(currentIndex) {
     const layer = parseInt(layerSlider.value) - 1;
     const head = parseInt(headSlider.value) - 1;
