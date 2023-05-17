@@ -33,37 +33,35 @@ document.addEventListener('DOMContentLoaded', function() {
       prompt: prompt
     };
     fetch('/attention_scores', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(data => {
-        const inputTokens = data.input_tokens;
-        attentions = data.attentions;
-        spans = [];
-        promptTextElement.innerHTML = '';
-
-        inputTokens.forEach((token, i) => {
-          const span = document.createElement('span');
-          span.innerHTML = token.replace(/Ġ/g, ' ').replace(/Ċ/g, '<br>');
-          span.dataset.index = i;
-          span.addEventListener('click', function() {
-            const currentIndex = parseInt(this.dataset.index);
-            spans.forEach((span) => span.style.backgroundColor = 'transparent');
-            if (this.classList.contains('highlight')) {
-              this.classList.remove('highlight');
-            } else {
-              this.classList.add('highlight');
-              visualizeAttention(currentIndex);
-            }
-          });
-
-          spans.push(span);
-          promptTextElement.appendChild(span);
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      const inputTokens = data.input_tokens;
+      attentions = data.attentions;
+      spans = [];
+      promptTextElement.innerHTML = '';
+      inputTokens.forEach((token, i) => {
+        const span = document.createElement('span');
+        span.innerHTML = token.replace(/Ġ/g, ' ').replace(/Ċ/g, '<br>');
+        span.dataset.index = i;
+        span.addEventListener('click', function() {
+          const currentIndex = parseInt(this.dataset.index);
+          spans.forEach((span) => span.style.backgroundColor = 'transparent');
+          if (this.classList.contains('highlight')) {
+            this.classList.remove('highlight');
+          } else {
+            this.classList.add('highlight');
+            visualizeAttention(currentIndex);
+          }
         });
+        spans.push(span);
+        promptTextElement.appendChild(span);
       });
+    });
   });
 });
