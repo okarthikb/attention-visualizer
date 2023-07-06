@@ -1,6 +1,6 @@
 ## Attention visualizer
 
-A minimal web interface template for viewing attention layers in language models: load any HF model (or your own) and adjust sliders (adjust slider limits for layer and head in `app.js` when using a different model) to view attention pattern at a particular layer and head.
+A web interface for viewing attention layers in language models: load any HF model (or your own) and adjust sliders (adjust slider limits for layer and head in `app.js` when using a different model) to view attention pattern at a particular layer and head.
 
 <div align="center"><img width="1130" alt="induction_head" src="https://github.com/okarthikb/llm-attn-vis/assets/86470305/09b6dd78-f186-4f48-bc29-afe9b04d232e"></div>
 
