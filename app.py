@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify, send_file
-from transformers import AutoTokenizer, GPT2Model
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
 
 app = Flask(__name__, template_folder='./', static_folder='./')
 
-model = GPT2Model.from_pretrained("gpt2").eval().to('cpu')
-tokenizer = AutoTokenizer.from_pretrained("gpt2")
+model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-neo-125M").eval().to('cpu')
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-125M")
 
 
 @app.route('/')
